@@ -96,7 +96,17 @@ $( document ).ready(function() {
         default:
           bearing = -21;
       }
-      setMapBounds(geoDataArray[currentIndex], bearing);
+
+      let padding = {};
+      switch(currentIndex) {
+        case 4:
+          padding = 120;
+          break;
+        default:
+          padding = 100;
+      }
+      
+      setMapBounds(geoDataArray[currentIndex], padding, bearing);
     }
     
     // highlight the current section
@@ -107,12 +117,12 @@ $( document ).ready(function() {
   }
 
 
-  function setMapBounds(points, bearing) {
+  function setMapBounds(points, padding, bearing) {
     let bbox = turf.extent(points);
     if (isMobile)
       map.fitBounds(bbox, {padding: {top: 40, bottom: 40, left: 0, right: 0}, bearing: bearing});
     else
-      map.fitBounds(bbox, {offset: [200,0], padding: {top: 100, bottom: 80, left: 0, right: 0}, bearing: bearing});
+      map.fitBounds(bbox, {offset: [300,0], padding: padding, bearing: bearing});
   }
 
 
@@ -120,6 +130,9 @@ $( document ).ready(function() {
     dataUrls.forEach(function (url, index) {
       loadData(url, function (responseText) {
         parseData(JSON.parse(responseText), index);
+
+        if (index===0)
+          setMapBounds(geoDataArray[currentIndex], 100, -180);
       })
     })
   }
@@ -158,8 +171,11 @@ $( document ).ready(function() {
       center: [29.5, 8.0],
       maxZoom: 17,
       zoom: 8.2,
-      bearing: -180
+      bearing: -180,
+      attributionControl: false
     });
+
+    map.addControl(new mapboxgl.AttributionControl(), 'top-right');
 
     //disable scrolling map zoom
     map.scrollZoom.disable();
@@ -205,7 +221,7 @@ $( document ).ready(function() {
 
     loadData('geodata_locations.geojson', function (responseText) {
       //fit to bounds of featured locations
-      setMapBounds(JSON.parse(responseText), -180);
+      //setMapBounds(JSON.parse(responseText), -180);
     });
   }
 
