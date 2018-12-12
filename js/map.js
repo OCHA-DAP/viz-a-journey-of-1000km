@@ -11,7 +11,7 @@ $( document ).ready(function() {
     }
   });
 
-  const DATA_URL = '';//https://baripembo.github.io/idp-southsudan/';
+  const DATA_URL = '';
   mapboxgl.accessToken = 'pk.eyJ1IjoiaHN3OTgiLCJhIjoiY2oyOXh2dzlxMDAwYzJ3bzcyMnRseXcxNCJ9.1h5sGCIL0Pig6OmgZdDBMg';
 
   let isMobile = $(window).width()<600? true : false;
