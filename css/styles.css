@@ -78,14 +78,13 @@ body {
 
 
 .ticker {
-  background-color: rgba(255,255,255,0.8);
-	border-bottom: 1px solid #CCC;
+  	background-color: rgba(0,0,0,0.8);
 	height: 50px;
 	padding: 0 20px;
 	position: fixed;
 	top: -50px;
 	transition: top 0.5s ease; 
-  width: 100%;
+  	width: 100%;
 	z-index: 91;  
 	overflow: hidden; 
 }
@@ -93,11 +92,13 @@ body {
 	top: 0;
 }
 .ticker p {
-	font-size: 16px;
+	color: #FFF;
+	font-size: 18px;
 	font-weight: bold;
 	line-height: 50px;
 	margin: 0;
 	padding: 0;
+	text-align: center;
 }
 
 hr {
