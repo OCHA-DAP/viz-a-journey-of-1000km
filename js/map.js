@@ -122,7 +122,7 @@ $( document ).ready(function() {
     if (isMobile)
       map.fitBounds(bbox, {padding: {top: 40, bottom: 40, left: 0, right: 0}, bearing: bearing});
     else
-      map.fitBounds(bbox, {offset: [300,0], padding: padding, bearing: bearing});
+      map.fitBounds(bbox, {offset: [250,0], padding: padding, bearing: bearing});
   }
 
 
