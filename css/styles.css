@@ -350,6 +350,12 @@ img {
 		line-height: 20px;
 		width: 100%;
 	}
+	.ticker p {
+		font-size: 17px;
+	}
+	.main section {
+		padding: 20px;
+	}
   .slideshow {
   	margin-left: 0;
   }
