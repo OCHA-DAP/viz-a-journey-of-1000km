@@ -73,16 +73,6 @@ $( document ).ready(function() {
     //update ticker
     updateTicker(tickerArray[currentIndex]);
 
-    //show current section icons
-    let layer = newSection+'Layer';
-    if (map.getLayer(layer)) {
-      map.setPaintProperty(layer, 'icon-opacity', 1);
-      if (currentIndex===0) {
-        map.setLayoutProperty(layer, 'icon-rotate', ['get', 'bearing']);
-        map.setLayoutProperty(layer, 'icon-rotation-alignment', 'map');
-      }
-    }
-
     //fit map to bounds of current section
     if (geoDataArray[currentIndex]!==undefined) {
       let bearing = -21;
@@ -181,7 +171,7 @@ $( document ).ready(function() {
     map.scrollZoom.disable();
 
     //add icon images
-    let iconArray = ['icon_circle','icon_foot','icon_foot_up','icon_boat','icon_clash'];
+    let iconArray = ['icon_circle','icon_foot','icon_boat','icon_clash'];
     iconArray.forEach(function(imageName) {
       map.loadImage(DATA_URL+'assets/icons/'+imageName+'.png', function(error, image) {
         map.addImage(imageName, image);
