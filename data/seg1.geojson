@@ -4,7 +4,7 @@
       {
          "type":"Feature",
          "properties":{
-            "transport":"foot_up",
+            "transport":"foot",
             "name":"padeah",
             "ticker":"0 steps walked. 0 km. 0 days."
          },
