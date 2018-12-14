@@ -241,7 +241,6 @@ $( document ).ready(function() {
     mixpanel.track('page view', {
       'page title': document.title
     });
-    console.log(window.location.hostname);
   }
 
   function initSlideshows() {  
