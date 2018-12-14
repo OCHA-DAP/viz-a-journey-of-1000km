@@ -1,15 +1,4 @@
 $( document ).ready(function() {
-  $('.slideshow').slick({
-    dots: true,
-    lazyLoad: 'progressive',
-  });
-
-  $('.slideshow .slick-slide > img').each(function(){ 
-    if ($(this).attr('title')){
-      var slideCaption = $(this).attr('title');
-      $(this).parent('.slick-slide').append('<div class="slide-caption">' + slideCaption + '</div>');
-    }
-  });
 
   const DATA_URL = '';
   mapboxgl.accessToken = 'pk.eyJ1IjoiaHN3OTgiLCJhIjoiY2oyOXh2dzlxMDAwYzJ3bzcyMnRseXcxNCJ9.1h5sGCIL0Pig6OmgZdDBMg';
@@ -239,14 +228,37 @@ $( document ).ready(function() {
           'icon-padding': 4,
         },
         'paint': {
-          'icon-opacity': 1,
-          // 'icon-opacity-transition': {
-          //   'duration': 1000
-          // }
+          'icon-opacity': 1
         }
       });
     });
   }
 
+  function initTracking() {
+    //initialize mixpanel
+    let MIXPANEL_TOKEN = window.location.hostname==='data.humdata.org'? '5cbf12bc9984628fb2c55a49daf32e74' : '99035923ee0a67880e6c05ab92b6cbc0';
+    mixpanel.init(MIXPANEL_TOKEN);
+    mixpanel.track('page view', {
+      'page title': document.title
+    });
+    console.log(window.location.hostname);
+  }
+
+  function initSlideshows() {  
+    $('.slideshow').slick({
+      dots: true,
+      lazyLoad: 'progressive',
+    });
+
+    $('.slideshow .slick-slide > img').each(function(){ 
+      if ($(this).attr('title')){
+        var slideCaption = $(this).attr('title');
+        $(this).parent('.slick-slide').append('<div class="slide-caption">' + slideCaption + '</div>');
+      }
+    });
+  }
+
+  initSlideshows();
   initMap();
+  initTracking();
 });
